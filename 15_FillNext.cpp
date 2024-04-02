@@ -13,6 +13,23 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right, TreeNode *next) : val(x), left(left), right(right), next(next) {}
 };
 
+class Solution1 {
+public: 
+    void link(TreeNode *left, TreeNode*right) {
+        if (!left || !right) return;
+        left->next = right;
+        link(left->left, left->right);
+        link(left-right, right->left);
+        link(right->left, right->right);
+        return;
+    }
+    void fillNext(TreeNode *root) {
+        if (!root) return;
+        link(root->left, root->right);
+        return;
+    }
+};
+
 class Solution {
 public: 
     void fillNext(TreeNode *root) {
