@@ -13,7 +13,30 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right, TreeNode *next) : val(x), left(left), right(right), next(next) {}
 };
 
+class Solution3 {
+    // TC: O(n);
+    // SC: O(1);
+public:     
+    void fillNext(TreeNode *root) {
+        if (!root) return;
+
+        TreeNode *p = root;
+        while(p->left) {
+            TreeNode *q = p;
+            while(q) {
+                q->left->next = q->right;
+                if (q->next) q->right->next = q->next->left;
+                q = q->next;
+            }
+            p = p->next;
+        }
+        return;
+    }
+};
+
 class Solution2 {
+    // TC: O(n);
+    // SC: O(h);
 public:     
     void fillNext(TreeNode *root) {
         if (!root) return;
