@@ -13,7 +13,22 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right, TreeNode *next) : val(x), left(left), right(right), next(next) {}
 };
 
+class Solution2 {
+public:     
+    void fillNext(TreeNode *root) {
+        if (!root) return;
+
+        if (root->left) root->left-next = root->right;
+        if (root->next) root->right->next = root->next->left;
+
+        fillNext(root->left);
+        fillNext(root->right);
+        return;
+    }
+};
+
 class Solution1 {
+    // Using DFS
 public: 
     void link(TreeNode *left, TreeNode*right) {
         if (!left || !right) return;
